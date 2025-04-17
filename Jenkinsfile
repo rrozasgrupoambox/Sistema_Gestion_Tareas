@@ -16,5 +16,13 @@ pipeline {
         bat 'npm run test'
       }
     }
+    stage('Construir Imagen Docker') {
+      steps {
+          script {
+              def imageName = 'Dockerfile:latest'
+              bat "docker build -t ${imageName} ."
+          }
+      }
+    }
   }
 }
